@@ -25,6 +25,10 @@ function set-window-title {
   printf "$title_format" "${(V%)title_formatted}"
 }
 
+function _record-eternal-history {
+  echo $1 >> ~/.eternal_history
+}
+
 # Sets the terminal tab title.
 function set-tab-title {
   local title_format{,ted}
@@ -119,3 +123,5 @@ then
   # Sets the tab and window titles before command execution.
   add-zsh-hook preexec _terminal-set-titles-with-command
 fi
+
+add-zsh-hook preexec _record-eternal-history
