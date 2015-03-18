@@ -10,4 +10,24 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
-# Customize to your needs...
+# get last argument of previous command with Alt-.
+bindkey '\e.' insert-last-word
+# prefix sudo with Control-a
+bindkey -s '' '\eIsudo \eA'
+bindkey -s "" '\eIman \eA'
+
+alias ins="sudo apt-get install"
+alias upd='sudo apt-get update'
+alias upg='sudo apt-get upgrade'
+alias renm='sudo service network-manager restart'
+alias rea='sudo service apache2 restart'
+alias resql='sudo service mysql restart'
+alias ..='cd ..'
+alias ...='cd ../..'
+alias cdd='cd ~/Desktop'
+alias pyserve='python -m SimpleHTTPServer'
+alias df='df -h'
+alias ipythonqt='ipython qtconsole --colors=linux'
+#alias sudo='sudo '
+alias hist='cat ~/.eternal_history | grep'
+alias pgrep='ps -ef | grep'
