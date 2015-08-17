@@ -17,6 +17,8 @@ if ! autoload -Uz is-at-least || ! is-at-least "$min_zsh_version"; then
 fi
 unset min_zsh_version
 
+export TERM=xterm-256color
+
 #
 # Module Loader
 #
