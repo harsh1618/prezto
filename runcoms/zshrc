@@ -13,22 +13,26 @@ fi
 # get last argument of previous command with Alt-.
 bindkey '\e.' insert-last-word
 # prefix sudo with Control-a
-bindkey -s '' '\eIsudo \eA'
-bindkey -s "" '\eIman \eA'
+bindkey -s "" 'sudo '
+bindkey -s "" 'man '
+set -k
 
 alias ins="sudo apt-get install"
 alias upd='sudo apt-get update'
 alias upg='sudo apt-get upgrade'
 alias renm='sudo service network-manager restart'
-alias rea='sudo service apache2 restart'
-alias resql='sudo service mysql restart'
 alias ..='cd ..'
 alias ...='cd ../..'
 alias cdd='cd ~/Desktop'
 alias pyserve='python -m SimpleHTTPServer'
 alias df='df -h'
 alias iqt='ipython qtconsole --colors=linux'
-#alias sudo='sudo '
 alias hist='cat ~/.eternal_history | grep'
-alias pgrep='ps -ef | grep'
+alias psef='ps -ef | grep'
 alias vim='nvim'
+alias gdb='gdb -q'
+
+# OPAM configuration
+. /home/harsh/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
+
+export PATH=$PATH:/opt/framac/bin

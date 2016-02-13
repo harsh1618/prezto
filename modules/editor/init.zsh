@@ -247,18 +247,12 @@ bindkey -M vicmd "v" edit-command-line
 bindkey -M vicmd "u" undo
 bindkey -M vicmd "$key_info[Control]R" redo
 
-bindkey -M viins 'OA' history-search-backward
-bindkey -M viins 'OB' history-search-forward
-
 if (( $+widgets[history-incremental-pattern-search-backward] )); then
-  bindkey -M viins "" history-incremental-pattern-search-backward
-  bindkey -M vicmd "?" history-incremental-pattern-search-forward
-  # use up/down to cycle through history
-  bindkey -M isearch "OA" history-incremental-pattern-search-backward
-  bindkey -M isearch "OB" history-incremental-pattern-search-forward
+  bindkey -M vicmd "?" history-incremental-pattern-search-backward
+  bindkey -M vicmd "/" history-incremental-pattern-search-forward
 else
-  bindkey -M viins "" history-incremental-search-backward
-  bindkey -M vicmd "?" history-incremental-search-forward
+  bindkey -M vicmd "?" history-incremental-search-backward
+  bindkey -M vicmd "/" history-incremental-search-forward
 fi
 
 #

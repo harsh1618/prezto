@@ -22,7 +22,6 @@ export TERM=xterm-256color
 #
 # Module Loader
 #
-
 # Loads Prezto modules.
 function pmodload {
   local -a pmodules
