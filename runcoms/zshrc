@@ -36,3 +36,22 @@ alias gdb='gdb -q'
 . /home/harsh/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
 
 export PATH=$PATH:/opt/framac/bin
+
+function pantheon_command_completion {
+  # Show notifications when a task is completed. (Pantheon-terminal)
+  if [[ -n "$PANTHEON_TERMINAL_ID" ]] \
+  && builtin hash dbus-send 2> /dev/null \
+  && [[ -z $(whence pantheon_terminal_command_competion_callback) ]]
+  then
+  dbus-send \
+      --type=method_call \
+      --session \
+      --dest=net.launchpad.pantheon-terminal \
+      /net/launchpad/pantheon_terminal \
+      org.pantheon.terminal.ProcessFinished \
+      string:$PANTHEON_TERMINAL_ID \
+      string:"$(fc -ln -1)"
+  fi
+}
+
+add-zsh-hook precmd pantheon_command_completion
